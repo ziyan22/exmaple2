@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+	"name": "react-es6-popup-example",
+	"description": "See your mark with link",
+	"version": "1.0",
+	"applications": {
+		"gecko": {
+			"id": "chillout-page-action@mozilla.org"
+		}
+	},
+
+	"browser_action": {
+		"browser_style": true,
+		"default_icon": {
+			"48": "images/Watermelon-48.png",
+			"96": "images/Watermelon-96.png"
+		},
+		"default_title": "React Example",
+		"default_popup": "./pages/popup.html"
+	},
+
+	"background": {
+		"page": "pages/background.html"
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["./pages/content-script.js"]
+		}
+	],
+
+	"permissions": [
+		"<all_urls>",
+		"alarms",
+		"tabs",
+		"storage",
+		"contextMenus",
+		"activeTab"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
